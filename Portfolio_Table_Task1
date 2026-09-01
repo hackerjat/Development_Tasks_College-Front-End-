@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hariom Singh - Portfolio</title>
+
+    <style>
+        /* Dark Theme Background */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0px;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+        }
+
+        /* Header Style Changed */
+        header {
+            background-color: #000000;
+            color: #4af626; /* Neon Green Text */
+            padding: 25px;
+            text-align: left; /* Pehle center tha, ab left kar diya */
+            border-bottom: 4px solid #4af626;
+            padding-left: 40px;
+        }
+
+        /* Nav Style Changed */
+        nav {
+            background-color: #2d2d2d;
+            padding: 15px;
+            padding-left: 40px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 25px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            color: #000000;
+            background-color: #4af626;
+            padding: 5px;
+        }
+
+        /* Main Sections Changed */
+        section {
+            background-color: #252526;
+            padding: 20px;
+            margin: 30px 40px;
+            border-left: 8px solid #4af626; /* Left me ek mota border laga diya */
+        }
+
+        h2 {
+            color: #4af626;
+            text-decoration: underline;
+        }
+
+        /* Simple Image */
+        #about img {
+            width: 130px;
+            border: 2px solid #4af626;
+        }
+
+        /* TABLE CSS - EXACTLY SAME (No changes made here) */
+        .table-container {
+            color: black; /* Table ka text black rahe isliye yaha color set kiya */
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            font-size: 12px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0066cc;
+            color: white;
+        }
+
+        td {
+            height: 60px;
+        }
+
+        .lab {
+            background-color: #ffff00;
+        }
+
+        .online {
+            background-color: #ddd6f3;
+        }
+
+        /* Footer Style */
+        footer {
+            text-align: center;
+            background-color: #000000;
+            color: #4af626;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 4px solid #4af626;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Hariom Singh</h1>
+    <p>> Student Portfolio_</p>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#timetable">Timetable</a>
+</nav>
+
+<main>
+
+<section id="about">
+    <h2>About Me</h2>
+    <img src="https://ui-avatars.com/api/?name=Hariom+Singh&background=4af626&color=000&size=130" alt="Hariom Singh">
+    <p><strong>Name:</strong> Hariom Singh (B.Tech Student)</p>
+    <p><strong>Location:</strong> Agra, Uttar Pradesh, Mathura</p>
+    <p><strong>Email:</strong> hariom.singh1@gla.ac.in</p>
+    <p><strong>Phone:</strong> 9634358309</p>
+</section>
+
+<section id="education">
+    <h2>Education</h2>
+    <ul>
+        <li>GLA University - B.Tech (Computer Science)</li>
+        <li>Green Land Convent Sr. Sec. School</li>
+    </ul>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <ul>
+        <li>Web Development</li>
+        <li>Java</li>
+        <li>HTML5</li>
+        <li>Problem Solving</li>
+        <li>JavaScript</li>
+    </ul>
+</section>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <ul>
+        <li><strong>Amazon Dummy GUI:</strong> Design the dummy Amazon website interface.</li>
+        <li><strong>Personal Portfolio:</strong> Created a personal website using HTML and CSS.</li>
+    </ul>
+</section>
+
+<section id="timetable" class="table-container">
+    <h2>Academic Timetable</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Day/Time</th>
+                <th>08:00-09:00</th>
+                <th>09:00-10:00</th>
+                <th>10:00-11:00</th>
+                <th>11:00-12:00</th>
+                <th>12:00-01:00</th>
+                <th>01:00-02:00</th>
+                <th>02:00-03:00</th>
+                <th>03:00-04:00</th>
+                <th>04:00-05:00</th>
+                <th>05:00-06:00</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Monday</th>
+                <td></td>
+                <td></td>
+                <td>BMA50108<br>ABI-109</td>
+                <td></td>
+                <td>2FA1/BCSC1802<br>ABI-213</td>
+                <td>2FA2/BCSC1802<br>ABI-214</td>
+                <td>2FA3/BCSC1802<br>ABV-218A</td>
+                <td>BCSE0031<br>ABI-316</td>
+                <td>BCSC0009<br>ABI-316</td>
+                <td>BELH0020<br>ABI-316</td>
+            </tr>
+            <tr>
+                <th>Tuesday</th>
+                <td></td>
+                <td></td>
+                <td>BMA50108<br>ABI-316</td>
+                <td>BCSC1003<br>ABI-316</td>
+                <td>BCSE0031<br>ABI-316</td>
+                <td></td>
+                <td></td>
+                <td>BCSC0009<br>ABI-306</td>
+                <td></td>
+                <td>
+                    2FA1/BELH0020<br>ABI-316<br><br>
+                    2FA2/BELH0020<br>ABI-207
+                </td>
+            </tr>
+            <tr>
+                <th>Wednesday</th>
+                <td></td>
+                <td></td>
+                <td>BCSE0031<br>ABI-305</td>
+                <td class="lab">
+                    BCSC1805<br>
+                    (AA,FA,CA)<br>
+                    ABI-305
+                </td>
+                <td class="lab">
+                    BCSC1805<br>
+                    (AA,FA,CA)<br>
+                    ABI-305
+                </td>
+                <td></td>
+                <td class="lab">
+                    BCSC1006<br>
+                    (AA,FA,CA)<br>
+                    ABI-305
+                </td>
+                <td class="lab">
+                    BCSC1006<br>
+                    (AA,FA,CA)<br>
+                    ABI-305
+                </td>
+                <td class="lab">
+                    BCSC1006<br>
+                    (AA,FA,CA)<br>
+                    ABI-305
+                </td>
+                <td>BCSC0009<br>ABI-311</td>
+            </tr>
+            <tr>
+                <th>Thursday</th>
+                <td class="online">
+                    BCSM0001<br>
+                    ABI-425(Dummy)<br>
+                    Online
+                </td>
+                <td></td>
+                <td class="lab">
+                    BMA50108<br>ABI-305
+                </td>
+                <td class="lab">
+                    BCSC1805<br>
+                    (AA,FA,CA)<br>
+                    ABI-305
+                </td>
+                <td>BCSC1003<br>ABI-316</td>
+                <td></td>
+                <td class="lab">
+                    BCSC1805<br>
+                    (AA,FA,CA)<br>
+                    ABI-305
+                </td>
+                <td class="lab">
+                    BCSC1006<br>
+                    (AA,FA,CA)<br>
+                    ABI-305
+                </td>
+                <td class="lab">
+                    BCSC1006<br>
+                    (AA,FA,CA)<br>
+                    ABI-305
+                </td>
+                <td>
+                    2FA1/BELH0020<br>ABI-109<br><br>
+                    2FA2/BELH0020<br>ABI-201
+                </td>
+            </tr>
+            <tr>
+                <th>Friday</th>
+                <td class="online">
+                    BCSM0001<br>
+                    ABI-425(Dummy)<br>
+                    Online
+                </td>
+                <td></td>
+                <td>BMA50108<br>ABI-109</td>
+                <td>BCSC1003<br>ABI-109</td>
+                <td></td>
+                <td></td>
+                <td>BCS0813<br>ABI-109</td>
+                <td></td>
+                <td>BELH0020<br>ABI-109</td>
+                <td>
+                    2FA1/BELH0020<br>ABI-109<br><br>
+                    2FA2/BELH0020<br>ABI-201
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+</main>
+
+<footer>
+    <p>System.out.println("© 2026 Hariom Singh");</p>
+</footer>
+
+</body>
+</html>
