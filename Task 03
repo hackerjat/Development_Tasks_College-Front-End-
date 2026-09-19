@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin: 32px 0 16px;
+    }
+
+    .app-layout {
+      display: flex;
+      min-height: 380px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      background-color: #0f172a;
+      color: #f8fafc;
+      padding: 24px 16px;
+    }
+
+    .sidebar h3 {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #94a3b8;
+      margin-bottom: 16px;
+    }
+
+    .sidebar nav a {
+      display: block;
+      padding: 8px 12px;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      margin-bottom: 4px;
+    }
+
+    .sidebar nav a:hover {
+      background-color: #1e293b;
+      color: #ffffff;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 32px;
+    }
+
+    .main-content h2 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .main-content p {
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    .product-section {
+      display: flex;
+      justify-content: center;
+    }
+
+    .product-card {
+      width: 320px;
+      margin: 16px;
+      border: 1px solid #e2e8f0;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      background-color: #e2e8f0;
+    }
+
+    .product-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .product-card .price {
+      font-size: 1.25rem;
+      color: #16a34a;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .product-card p.desc {
+      font-size: 0.875rem;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+
+    .product-card button {
+      width: 100%;
+      padding: 10px 16px;
+      border: none;
+      background-color: #2563eb;
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .product-card button:hover {
+      background-color: #1d4ed8;
+    }
+
+    .blog-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .blog-card {
+      flex: 1 1 calc(33.333% - 16px);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      background-color: #e2e8f0;
+    }
+
+    .blog-content {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .blog-content h4 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .blog-content p {
+      font-size: 0.875rem;
+      color: #64748b;
+      margin-bottom: 16px;
+    }
+
+    .blog-content a {
+      color: #2563eb;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+      .blog-card {
+        flex: 1 1 calc(50% - 12px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .app-layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .blog-card {
+        flex: 1 1 100%;
+      }
+
+      .container {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <h2 class="section-title">Sidebar Layout</h2>
+    <div class="app-layout">
+      <aside class="sidebar">
+        <h3>Menu</h3>
+        <nav>
+          <a href="#">Dashboard</a>
+          <a href="#">Analytics</a>
+          <a href="#">Settings</a>
+          <a href="#">Support</a>
+        </nav>
+      </aside>
+      <main class="main-content">
+        <h2>Overview</h2>
+        <p>Welcome to the main dashboard. Content automatically scales across mobile and desktop viewports.</p>
+      </main>
+    </div>
+
+    <h2 class="section-title">Product Card</h2>
+    <div class="product-section">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80" alt="Headphones">
+        <h3>Wireless Headphones</h3>
+        <p class="price">$99.99</p>
+        <p class="desc">Active noise cancellation with up to 30 hours of battery life on a single charge.</p>
+        <button type="button">Add to Cart</button>
+      </div>
+    </div>
+
+    <h2 class="section-title">Latest Articles</h2>
+    <div class="blog-grid">
+      
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&q=80" alt="Code">
+        <div class="blog-content">
+          <div>
+            <h4>CSS Flexbox Guide</h4>
+            <p>Building clean, responsive component layouts with modern CSS standard flex properties.</p>
+          </div>
+          <a href="#">Read article &rarr;</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&q=80" alt="Laptop">
+        <div class="blog-content">
+          <div>
+            <h4>Responsive Principles</h4>
+            <p>Key breakpoints and fluid sizing strategies for modern cross-device UI development.</p>
+          </div>
+          <a href="#">Read article &rarr;</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&q=80" alt="Development">
+        <div class="blog-content">
+          <div>
+            <h4>CSS Box Model Basics</h4>
+            <p>Understanding margin collapse, content boxes, and element sizing in practice.</p>
+          </div>
+          <a href="#">Read article &rarr;</a>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
