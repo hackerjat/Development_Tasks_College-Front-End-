@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Space Landing Page</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  body {
+    background-color: #0b1026;
+    color: white;
+  }
+
+  /* ---------- Navbar hover transition ---------- */
+  .nav-link {
+    color: #ccc !important;
+    transition: color 0.3s, transform 0.3s;
+  }
+  .nav-link:hover {
+    color: orange !important;
+    transform: translateY(-3px);
+  }
+
+  /* ---------- Hero section ---------- */
+  .hero {
+    padding: 120px 0 80px;
+    background: linear-gradient(#0b1026, #1d2a66);
+  }
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+
+  /* ---------- Keyframe animations ---------- */
+
+  /* 1. Rocket moves up and down */
+  .rocket {
+    font-size: 100px;
+    display: inline-block;
+    animation: fly 3s ease-in-out infinite;
+  }
+  @keyframes fly {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-30px); }
+    100% { transform: translateY(0); }
+  }
+
+  /* 2. Astronaut floats and rotates slowly */
+  .astronaut {
+    font-size: 80px;
+    display: inline-block;
+    animation: float 5s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%   { transform: rotate(-10deg); }
+    50%  { transform: rotate(10deg) translateY(-20px); }
+    100% { transform: rotate(-10deg); }
+  }
+
+  /* 3. Text fades in when page loads */
+  .fade-in {
+    animation: fadeIn 2s;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ---------- Cards hover ---------- */
+  .card {
+    background-color: #141b3d;
+    border: 1px solid #2c3873;
+    color: white;
+    transition: transform 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-8px);
+  }
+
+  footer {
+    padding: 20px 0;
+    color: #999;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#home">🚀 SpaceX Lite</a>
+
+    <!-- Hamburger button for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero text-center" id="home">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- Text: full width on mobile, half on laptop -->
+      <div class="col-md-6 fade-in">
+        <h1>Explore the Universe</h1>
+        <p class="lead">A simple space themed landing page made with Bootstrap.</p>
+        <a href="#contact" class="btn btn-warning btn-lg">Get Started</a>
+      </div>
+
+      <!-- Animated rocket + astronaut -->
+      <div class="col-md-6 mt-4 mt-md-0">
+        <span class="rocket">🚀</span>
+        <span class="astronaut">👨‍🚀</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== FEATURES ========== -->
+<section class="py-5" id="features">
+  <div class="container">
+    <h2 class="text-center mb-4">Our Features</h2>
+    <div class="row g-4">
+
+      <!-- 1 column on mobile, 2 on tablet, 3 on laptop -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card text-center p-4">
+          <h3>⚡</h3>
+          <h5>Fast</h5>
+          <p>Loads quickly on every device.</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card text-center p-4">
+          <h3>📱</h3>
+          <h5>Responsive</h5>
+          <p>Looks good on mobile, tablet and desktop.</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card text-center p-4">
+          <h3>🎨</h3>
+          <h5>Simple Design</h5>
+          <p>Clean and easy to understand code.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="py-5 text-center" id="contact" style="background-color:#141b3d;">
+  <div class="container">
+    <h2>Join Us</h2>
+    <p>Enter your email to stay updated.</p>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <input type="email" class="form-control mb-3" placeholder="Your email">
+        <button class="btn btn-warning">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="text-center">
+  <p class="mb-0">© 2026 SpaceX Lite</p>
+</footer>
+
+<!-- Bootstrap JS (needed for the mobile menu) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
