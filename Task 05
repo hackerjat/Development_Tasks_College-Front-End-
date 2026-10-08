@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Age Checker - if else</title>
+</head>
+<body>
+
+<h2>Age Eligibility Checker (if-else version)</h2>
+
+<script>
+  // 1. User se input lena (prompt hamesha string return karta hai)
+  var name = prompt("Apna naam likhiye:");
+  var ageInput = prompt("Apni age likhiye:");
+
+  // 2. String ko number me badalna
+  var age = Number(ageInput);
+
+  // 3. if-else se check karna
+  if (ageInput === null || ageInput === "" || isNaN(age) || age < 0) {
+    // galat input
+    alert("Galat input! Kripya valid age daliye.");
+    document.write("<p style='color:red'>Invalid age entered.</p>");
+  }
+  else if (age >= 18) {
+    alert("Congratulations " + name + "! Aap vote dene ke liye eligible hain.");
+    document.write("<p style='color:green'>" + name + ", aapki age " + age + " hai. Aap <b>ELIGIBLE</b> hain. ✅</p>");
+  }
+  else {
+    var yearsLeft = 18 - age;
+    alert("Sorry " + name + ", aap abhi eligible nahi hain.");
+    document.write("<p style='color:red'>" + name + ", aapki age " + age + " hai. Aap <b>NOT ELIGIBLE</b> hain. ❌</p>");
+    document.write("<p>Eligible hone me " + yearsLeft + " saal baaki hain.</p>");
+  }
+</script>
+
+</body>
+</html>
