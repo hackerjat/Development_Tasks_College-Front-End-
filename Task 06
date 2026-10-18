@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Functions, Closures, IIFE</title>
+</head>
+<body>
+
+<h2>Version 1: Functions, Closures aur IIFE</h2>
+
+<script>
+  // ---------- 1. Normal function ----------
+  function add(a, b) {
+    return a + b;
+  }
+  document.write("<p>1. add(5, 3) = " + add(5, 3) + "</p>");
+
+  // ---------- 2. Function expression ----------
+  var square = function (n) {
+    return n * n;
+  };
+  document.write("<p>2. square(6) = " + square(6) + "</p>");
+
+  // ---------- 3. Function with default value ----------
+  function greet(name = "Student") {
+    return "Hello, " + name + "!";
+  }
+  document.write("<p>3. " + greet("Hariom") + " | " + greet() + "</p>");
+
+  // ---------- 4. Closure: counter ----------
+  // Inner function outer function ka variable (count) yaad rakhta hai
+  function makeCounter() {
+    var count = 0;               // private variable
+
+    return function () {
+      count++;
+      return count;
+    };
+  }
+
+  var counter1 = makeCounter();
+  var counter2 = makeCounter();   // ye alag counter hai
+
+  document.write("<p>4. Counter 1: " + counter1() + ", " + counter1() + ", " + counter1() + "</p>");
+  document.write("<p>   Counter 2: " + counter2() + "</p>");
+
+  // ---------- 5. Closure: multiplier ----------
+  function multiplyBy(x) {
+    return function (y) {
+      return x * y;
+    };
+  }
+  var double = multiplyBy(2);
+  var triple = multiplyBy(3);
+  document.write("<p>5. double(10) = " + double(10) + ", triple(10) = " + triple(10) + "</p>");
+
+  // ---------- 6. IIFE (Immediately Invoked Function Expression) ----------
+  // Ye function bante hi turant chal jata hai
+  (function () {
+    var message = "Ye IIFE hai, mai khud chal gaya!";
+    document.write("<p>6. " + message + "</p>");
+  })();
+
+  // ---------- 7. IIFE with closure: bank balance ----------
+  var bank = (function () {
+    var balance = 1000;          // bahar se direct access nahi hoga
+
+    return {
+      deposit: function (amount) {
+        balance = balance + amount;
+        return balance;
+      },
+      withdraw: function (amount) {
+        if (amount > balance) {
+          return "Insufficient balance";
+        }
+        balance = balance - amount;
+        return balance;
+      },
+      show: function () {
+        return balance;
+      }
+    };
+  })();
+
+  document.write("<p>7. Start balance: " + bank.show() + "</p>");
+  document.write("<p>   Deposit 500: " + bank.deposit(500) + "</p>");
+  document.write("<p>   Withdraw 300: " + bank.withdraw(300) + "</p>");
+  document.write("<p>   Withdraw 5000: " + bank.withdraw(5000) + "</p>");
+  document.write("<p>   Direct access (bank.balance): " + bank.balance + "</p>");
+</script>
+
+</body>
+</html>
