@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>To-Do List</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f2f4f8;
+    margin: 0;
+    padding: 20px;
+  }
+  h1 { text-align: center; }
+  h2 { margin-top: 0; }
+
+  /* Dono apps ke liye common box */
+  .box {
+    background: white;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  /* ---------- To-Do ---------- */
+  .todo-input { display: flex; gap: 8px; }
+  .todo-input input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+  }
+  button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 5px;
+    background: #4a6cf7;
+    color: white;
+    cursor: pointer;
+  }
+  button:hover { background: #2f4fd6; }
+
+  #todoList { list-style: none; padding: 0; }
+  #todoList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  #todoList li span { cursor: pointer; }
+  #todoList li.done span {
+    text-decoration: line-through;
+    color: gray;
+  }
+  .delete-btn { background: #e74c3c; }
+  .delete-btn:hover { background: #c0392b; }
+  #msg { color: red; height: 20px; }
+
+</style>
+</head>
+
+<body>
+
+<h1>To-Do List (DOM Manipulation)</h1>
+
+<!-- ================= APP 1: TO-DO LIST ================= -->
+<div class="box">
+  <h2>📝 To-Do List</h2>
+
+  <div class="todo-input">
+    <input type="text" id="taskInput" placeholder="Naya task likhiye...">
+    <button id="addBtn">Add</button>
+  </div>
+  <p id="msg"></p>
+
+  <ul id="todoList"></ul>
+</div>
+
+<script>
+  // =====================================================
+  //                 PART 1: TO-DO LIST
+  // =====================================================
+
+  // HTML elements ko JS me lena (DOM selection)
+  var taskInput = document.getElementById("taskInput");
+  var addBtn    = document.getElementById("addBtn");
+  var todoList  = document.getElementById("todoList");
+  var msg       = document.getElementById("msg");
+
+  // Task add karne wala function
+  function addTask() {
+    var text = taskInput.value.trim();
+
+    // Khali input check
+    if (text === "") {
+      msg.textContent = "Pehle kuch likhiye!";
+      return;
+    }
+    msg.textContent = "";
+
+    // 1. Naye elements banao
+    var li = document.createElement("li");
+    var span = document.createElement("span");
+    var delBtn = document.createElement("button");
+
+    // 2. Unme text/class daalo
+    span.textContent = text;
+    delBtn.textContent = "Delete";
+    delBtn.className = "delete-btn";
+
+    // 3. Task pe click karo to done / undo (line cut)
+    span.addEventListener("click", function () {
+      li.classList.toggle("done");
+    });
+
+    // 4. Delete button pe click karo to item hata do
+    delBtn.addEventListener("click", function () {
+      todoList.removeChild(li);
+    });
+
+    // 5. Elements ko ek dusre me jodo aur page pe dikhao
+    li.appendChild(span);
+    li.appendChild(delBtn);
+    todoList.appendChild(li);
+
+    // Input khali karke wapas cursor daalo
+    taskInput.value = "";
+    taskInput.focus();
+  }
+
+  // Add button pe click
+  addBtn.addEventListener("click", addTask);
+
+  // Enter key dabane pe bhi add ho
+  taskInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      addTask();
+    }
+  });
+</script>
+
+</body>
+</html>
