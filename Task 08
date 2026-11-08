@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chessboard - Table Version</title>
+</head>
+<body>
+
+<h2>Chessboard Version 1: Table + document.write</h2>
+
+<script>
+  var size = 8;   // 8 x 8 board (chahe to number badal sakte ho)
+
+  // Table shuru
+  document.write("<table style='border: 3px solid black; border-collapse: collapse;'>");
+
+  // Bahar wala loop = rows
+  for (var row = 0; row < size; row++) {
+    document.write("<tr>");
+
+    // Andar wala loop = columns
+    for (var col = 0; col < size; col++) {
+
+      // Agar row + col even hai to white, warna black
+      var color = (row + col) % 2 === 0 ? "white" : "black";
+
+      document.write("<td style='width:45px; height:45px; background-color:" + color + ";'></td>");
+    }
+
+    document.write("</tr>");
+  }
+
+  // Table khatam
+  document.write("</table>");
+</script>
+
+</body>
+</html>
