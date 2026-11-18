@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Async - Promise</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f2f4f8; padding: 20px; }
+  .box { background: white; max-width: 500px; margin: auto; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  input { padding: 8px; font-size: 16px; width: 80px; }
+  button { padding: 9px 14px; border: none; border-radius: 5px; background: #4a6cf7; color: white; cursor: pointer; }
+  #log p { margin: 6px 0; padding: 6px; background: #eef1ff; border-radius: 4px; }
+  .error { background: #ffe5e5 !important; color: red; }
+  .success { background: #e4f7e4 !important; }
+</style>
+</head>
+<body>
+
+<div class="box">
+  <h2>🤝 Promise</h2>
+
+  User ID (1, 2 ya 3):
+  <input type="number" id="idInput" value="1">
+  <button id="fetchBtn">Fetch Data</button>
+
+  <div id="log"></div>
+</div>
+
+<script>
+  var idInput  = document.getElementById("idInput");
+  var fetchBtn = document.getElementById("fetchBtn");
+  var log      = document.getElementById("log");
+
+  // Fake server ka data
+  var users = {
+    1: { name: "Aman",  city: "Mathura" },
+    2: { name: "Riya",  city: "Agra" },
+    3: { name: "Karan", city: "Delhi" }
+  };
+  var posts = {
+    1: ["HTML seekha", "CSS seekha"],
+    2: ["JavaScript seekha", "DOM seekha"],
+    3: ["Bootstrap seekha"]
+  };
+
+  function addLog(text, type) {
+    var p = document.createElement("p");
+    p.textContent = text;
+    if (type) {
+      p.className = type;
+    }
+    log.appendChild(p);
+  }
+
+  // Promise return karne wala function
+  // resolve = kaam ho gaya (success), reject = kuch galat ho gaya (fail)
+  function fetchUser(id) {
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        if (users[id]) {
+          resolve(users[id]);
+        } else {
+          reject("User nahi mila!");
+        }
+      }, 2000);
+    });
+  }
+
+  // Dusra Promise: user ke posts lana (1.5 second)
+  function fetchPosts(id) {
+    return new Promise(function (resolve) {
+      setTimeout(function () {
+        resolve(posts[id]);
+      }, 1500);
+    });
+  }
+
+  fetchBtn.addEventListener("click", function () {
+    var id = Number(idInput.value);
+    log.innerHTML = "";
+    fetchBtn.disabled = true;
+
+    addLog("1. Request bhej di... (Promise pending hai)");
+
+    fetchUser(id)
+      .then(function (user) {
+        // Promise resolve hua to ye chalega
+        addLog("3. User mil gaya: " + user.name + " (" + user.city + ")", "success");
+        return fetchPosts(id);            // chaining: agla Promise
+      })
+      .then(function (userPosts) {
+        addLog("4. Posts mil gaye: " + userPosts.join(", "), "success");
+      })
+      .catch(function (error) {
+        // Promise reject hua to ye chalega
+        addLog("Error: " + error, "error");
+      })
+      .finally(function () {
+        // Success ho ya error, ye hamesha chalega
+        addLog("5. Kaam khatam.");
+        fetchBtn.disabled = false;
+      });
+
+    // Ye line turant chalti hai
+    addLog("2. Main kaam chalu hai, data abhi aaya nahi...");
+  });
+</script>
+
+</body>
+</html>
