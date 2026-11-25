@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>University Finder - Fetch with then()</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f2f4f8;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 700px;
+    margin: auto;
+  }
+  h1 { text-align: center; }
+
+  .search-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+  .search-box input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+  }
+  button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    background: #4a6cf7;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  button:hover { background: #2f4fd6; }
+
+  #status { font-weight: bold; margin: 10px 0; }
+  .error { color: red; }
+
+  .card {
+    background: white;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+  }
+  .card h3 { margin: 0 0 6px 0; }
+  .card a { color: #4a6cf7; word-break: break-all; }
+</style>
+</head>
+
+<body>
+<div class="container">
+  <h1>🎓 University Finder</h1>
+
+  <div class="search-box">
+    <input type="text" id="countryInput" placeholder="Enter a country name (e.g. India)">
+    <button id="searchBtn">Search</button>
+  </div>
+
+  <p id="status"></p>
+  <div id="results"></div>
+</div>
+
+<script>
+  var countryInput = document.getElementById("countryInput");
+  var searchBtn    = document.getElementById("searchBtn");
+  var statusText   = document.getElementById("status");
+  var results      = document.getElementById("results");
+
+  // Free API, no API key needed
+  var API_URL = "http://universities.hipolabs.com/search?country=";
+
+  function searchUniversities() {
+    var country = countryInput.value.trim();
+
+    // Clear old results
+    results.innerHTML = "";
+    statusText.className = "";
+
+    // Validate input
+    if (country === "") {
+      statusText.textContent = "Please enter a country name.";
+      statusText.className = "error";
+      return;
+    }
+
+    statusText.textContent = "Loading...";
+
+    // Fetch API with .then() chaining
+    fetch(API_URL + encodeURIComponent(country))
+      .then(function (response) {
+        // Check that the server replied successfully
+        if (!response.ok) {
+          throw new Error("Server error: " + response.status);
+        }
+        // Convert the response body to JSON (this returns another Promise)
+        return response.json();
+      })
+      .then(function (universities) {
+        // The JSON data is ready here
+        if (universities.length === 0) {
+          statusText.textContent = "No universities found for \"" + country + "\".";
+          return;
+        }
+
+        statusText.textContent = "Found " + universities.length + " universities in " + country + ":";
+
+        // Show every university on the page
+        universities.forEach(function (uni) {
+          var card = document.createElement("div");
+          card.className = "card";
+
+          var name = document.createElement("h3");
+          name.textContent = uni.name;
+
+          var link = document.createElement("a");
+          link.href = uni.web_pages[0];
+          link.textContent = uni.web_pages[0];
+          link.target = "_blank";
+          link.rel = "noopener";
+
+          card.appendChild(name);
+          card.appendChild(link);
+          results.appendChild(card);
+        });
+      })
+      .catch(function (error) {
+        // Runs if the network fails or an error is thrown above
+        statusText.textContent = "Something went wrong: " + error.message;
+        statusText.className = "error";
+      });
+  }
+
+  searchBtn.addEventListener("click", searchUniversities);
+
+  // Press Enter to search
+  countryInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      searchUniversities();
+    }
+  });
+</script>
+
+</body>
+</html>
